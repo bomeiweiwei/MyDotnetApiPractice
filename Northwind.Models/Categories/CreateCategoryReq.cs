@@ -3,9 +3,8 @@ namespace Northwind.Models.Categories
 {
 	public class CreateCategoryReq
 	{
-		public CreateCategoryReq()
-		{
-		}
-	}
+		public string CategoryName { get; set; }
+        public string Description { get; set; }
+    }
 }
 

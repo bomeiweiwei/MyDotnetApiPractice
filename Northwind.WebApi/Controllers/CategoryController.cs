@@ -25,6 +25,12 @@ namespace Northwind.WebApi.Controllers
         {
             return await _categoryService.GetCategories();
         }
+        [HttpPost]
+        [Route("CreateCategory")]
+        public async Task<ApiResponseBase<int>> CreateCategory(CreateCategoryReq req)
+        {
+            return await _categoryService.CreateCategory(req);
+        }
     }
 }
 
