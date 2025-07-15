@@ -7,10 +7,14 @@
   <ItemGroup>
     <None Remove="NorthwindContext\" />
     <None Remove="NorthwindContext\Data\" />
+    <None Remove="Extensions\" />
+    <None Remove="NorthwindContext\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NorthwindContext\" />
     <Folder Include="NorthwindContext\Data\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="NorthwindContext\Models\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7">

@@ -4,6 +4,12 @@
     <ProjectReference Include="..\Northwind.Utilities\Northwind.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Categories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Categories\" />
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
