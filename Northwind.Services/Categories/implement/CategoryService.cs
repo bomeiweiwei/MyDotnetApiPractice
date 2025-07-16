@@ -6,13 +6,16 @@ using Northwind.Models.Categories;
 using Northwind.Utilities.CustExceptions;
 using Northwind.Utilities.Enum;
 using Northwind.Utilities.Extensions;
+using Northwind.Utilities.Helper;
 
 namespace Northwind.Services.Categories.implement
 {
     public class CategoryService : BaseService, ICategoryService
     {
-        public CategoryService()
+        private IGenericLogger _logger;
+        public CategoryService(IGenericLogger logger)
         {
+            _logger = logger;
         }
 
         public async Task<ApiResponseBase<List<CategoryDetail>>> GetCategories()
@@ -71,6 +74,7 @@ namespace Northwind.Services.Categories.implement
                     catch (Exception ex)
                     {
                         await transaction.RollbackAsync();
+                        _logger.Error(ex.Message);
                         throw new BusinessException(ReturnCode.ExceptionError, ReturnCode.ExceptionError.GetDescription());
                     }
                 });

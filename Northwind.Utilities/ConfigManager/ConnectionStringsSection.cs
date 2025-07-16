@@ -13,6 +13,7 @@ namespace Northwind.Utilities.ConfigManager
 
         public string Master => _section["MasterConnection"];
         public string Slave => _section["SlaveConnection"];
+        public string Redis => _section["RedisConnection"];
     }
 }
 

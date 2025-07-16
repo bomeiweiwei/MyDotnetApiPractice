@@ -11,12 +11,19 @@
     <None Remove="Categories\implement\" />
     <None Remove="Test\" />
     <None Remove="Test\implement\" />
+    <None Remove="CacheServer\" />
+    <None Remove="CacheServer\implement\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Categories\" />
     <Folder Include="Categories\implement\" />
     <Folder Include="Test\" />
     <Folder Include="Test\implement\" />
+    <Folder Include="CacheServer\" />
+    <Folder Include="CacheServer\implement\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.8.41" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
