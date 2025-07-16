@@ -4,7 +4,6 @@
     <None Remove="ConfigManager\" />
     <None Remove="Enum\" />
     <None Remove="Helper\" />
-    <None Remove="Filter\" />
     <None Remove="CustResp\" />
     <None Remove="CustExceptions\" />
     <None Remove="Extensions\" />
@@ -13,7 +12,6 @@
     <Folder Include="ConfigManager\" />
     <Folder Include="Enum\" />
     <Folder Include="Helper\" />
-    <Folder Include="Filter\" />
     <Folder Include="CustResp\" />
     <Folder Include="CustExceptions\" />
     <Folder Include="Extensions\" />

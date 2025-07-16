@@ -1,14 +1,11 @@
 ﻿using System;
-using Microsoft.Extensions.Logging;
-using Northwind.Utilities.Enum;
-using System.Threading;
-using Northwind.Utilities.CustResp;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Northwind.Utilities.CustExceptions;
+using Northwind.Utilities.CustResp;
+using Northwind.Utilities.Enum;
 
-namespace Northwind.Utilities.Filter
+namespace Northwind.WebApi.Filters
 {
     public class ApiExceptionFilter : IExceptionFilter
     {

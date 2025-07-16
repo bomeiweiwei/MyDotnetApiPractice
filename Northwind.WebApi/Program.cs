@@ -5,8 +5,8 @@ using Northwind.Utilities.ConfigManager;
 using Northwind.Utilities.CustExceptions;
 using Northwind.Utilities.CustResp;
 using Northwind.Utilities.Enum;
-using Northwind.Utilities.Filter;
 using Northwind.WebApi.Extensions;
+using Northwind.WebApi.Filters;
 using Serilog;
 using System;
 

@@ -34,9 +34,11 @@
   <ItemGroup>
     <None Remove="Extensions\" />
     <None Remove="Middlewares\" />
+    <None Remove="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="Middlewares\" />
+    <Folder Include="Filters\" />
   </ItemGroup>
 </Project>
