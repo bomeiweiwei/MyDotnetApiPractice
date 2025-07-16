@@ -10,14 +10,23 @@ using Northwind.Services.Test;
 
 namespace Northwind.WebApi.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
-    public class TestController : Controller
+    public class TestController : ControllerBase
     {
+        private readonly IWebHostEnvironment _env;
         private readonly ITestService _testService;
 
-        public TestController(ITestService testService)
+        public TestController(IWebHostEnvironment env, ITestService testService)
         {
+            _env = env;
             _testService = testService;
+        }
+
+        [HttpGet("/env")]
+        public IActionResult GetEnv()
+        {
+            return Ok(_env.EnvironmentName);
         }
 
         [HttpGet("check")]
