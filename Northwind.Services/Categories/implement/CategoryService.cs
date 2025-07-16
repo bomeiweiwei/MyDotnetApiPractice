@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Northwind.Entities.NorthwindContext.Models;
 using Northwind.Models;
 using Northwind.Models.Categories;
+using Northwind.Utilities.CustExceptions;
 using Northwind.Utilities.Enum;
+using Northwind.Utilities.Extensions;
 
 namespace Northwind.Services.Categories.implement
 {
@@ -15,7 +17,7 @@ namespace Northwind.Services.Categories.implement
 
         public async Task<ApiResponseBase<List<CategoryDetail>>> GetCategories()
         {
-            var result = new ApiResponseBase<List<CategoryDetail>>
+            var result = new ApiResponseBase<List<CategoryDetail>>()
             {
                 Data = new List<CategoryDetail>()
             };
@@ -41,6 +43,12 @@ namespace Northwind.Services.Categories.implement
             };
             using (var context = base.NorthwindDB(ConnectionMode.Master))
             {
+                var query = await context.Categories.FirstOrDefaultAsync(m => m.CategoryName == req.CategoryName);
+                if (query != null)
+                {
+                    throw new BusinessException(ReturnCode.DataAlreadyExisted, ReturnCode.DataAlreadyExisted.GetDescription());
+                }
+
                 var executionStrategy = context.Database.CreateExecutionStrategy();
                 await executionStrategy.ExecuteAsync(async () =>
                 {
@@ -63,8 +71,7 @@ namespace Northwind.Services.Categories.implement
                     catch (Exception ex)
                     {
                         await transaction.RollbackAsync();
-                        result.StatusCode = (long)ReturnCode.ExceptionError;
-                        result.Message = ex.Message;
+                        throw new BusinessException(ReturnCode.ExceptionError, ReturnCode.ExceptionError.GetDescription());
                     }
                 });
             }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Northwind.Services;
+using Northwind.Utilities.Helper;
 
 namespace Northwind.IoC
 {
@@ -13,6 +14,7 @@ namespace Northwind.IoC
         /// <param name="service"></param>
         public static void RegisterService(this IServiceCollection service)
         {
+            service.AddSingleton<IGenericLogger, GenericLogger>();
             service.RegisterInheritedTypes(typeof(BaseService).Assembly, typeof(BaseService));
         }
 

@@ -11,8 +11,9 @@ using Northwind.Services.Categories;
 
 namespace Northwind.WebApi.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
-    public class CategoryController : Controller
+    public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
         public CategoryController(ICategoryService categoryService)
@@ -21,15 +22,17 @@ namespace Northwind.WebApi.Controllers
         }
         [HttpGet]
         [Route("GetCategories")]
-        public async Task<ApiResponseBase<List<CategoryDetail>>> GetCategories()
+        public async Task<IActionResult> GetCategories()
         {
-            return await _categoryService.GetCategories();
+            var data = await _categoryService.GetCategories();
+            return Ok(data);
         }
         [HttpPost]
         [Route("CreateCategory")]
-        public async Task<ApiResponseBase<int>> CreateCategory(CreateCategoryReq req)
+        public async Task<IActionResult> CreateCategory(CreateCategoryReq req)
         {
-            return await _categoryService.CreateCategory(req);
+            var data = await _categoryService.CreateCategory(req);
+            return Ok(data);
         }
     }
 }

@@ -1,19 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Northwind.Extensions\Northwind.Extensions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="ConfigManager\" />
     <None Remove="Enum\" />
+    <None Remove="Helper\" />
+    <None Remove="Filter\" />
+    <None Remove="CustResp\" />
+    <None Remove="CustExceptions\" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ConfigManager\" />
     <Folder Include="Enum\" />
+    <Folder Include="Helper\" />
+    <Folder Include="Filter\" />
+    <Folder Include="CustResp\" />
+    <Folder Include="CustExceptions\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.3.0" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
