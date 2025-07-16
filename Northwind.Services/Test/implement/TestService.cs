@@ -2,7 +2,7 @@
 using Microsoft.Identity.Client;
 using Newtonsoft.Json.Linq;
 using Northwind.Models;
-using Northwind.Utilities.CustExceptions;
+using Northwind.Models.CustExceptions;
 using Northwind.Utilities.Enum;
 using Northwind.Utilities.Extensions;
 using Northwind.Utilities.Helper;

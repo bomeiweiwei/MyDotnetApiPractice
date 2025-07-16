@@ -4,16 +4,12 @@
     <None Remove="ConfigManager\" />
     <None Remove="Enum\" />
     <None Remove="Helper\" />
-    <None Remove="CustResp\" />
-    <None Remove="CustExceptions\" />
     <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ConfigManager\" />
     <Folder Include="Enum\" />
     <Folder Include="Helper\" />
-    <Folder Include="CustResp\" />
-    <Folder Include="CustExceptions\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>

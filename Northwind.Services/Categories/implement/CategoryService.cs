@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Northwind.Entities.NorthwindContext.Models;
 using Northwind.Models;
 using Northwind.Models.Categories;
-using Northwind.Utilities.CustExceptions;
+using Northwind.Models.CustExceptions;
 using Northwind.Utilities.Enum;
 using Northwind.Utilities.Extensions;
 using Northwind.Utilities.Helper;

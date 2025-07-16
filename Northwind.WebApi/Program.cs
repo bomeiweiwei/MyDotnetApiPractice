@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Newtonsoft.Json;
 using Northwind.IoC;
+using Northwind.Models.CustExceptions;
 using Northwind.Utilities.ConfigManager;
-using Northwind.Utilities.CustExceptions;
-using Northwind.Utilities.CustResp;
 using Northwind.Utilities.Enum;
 using Northwind.WebApi.Extensions;
 using Northwind.WebApi.Filters;
+using Northwind.WebApi.Models.CustResp;
 using Serilog;
 using System;
 

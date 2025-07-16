@@ -6,9 +6,11 @@
 
   <ItemGroup>
     <None Remove="Categories\" />
+    <None Remove="CustExceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Categories\" />
+    <Folder Include="CustExceptions\" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>

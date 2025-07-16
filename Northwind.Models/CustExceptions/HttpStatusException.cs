@@ -1,7 +1,7 @@
 ﻿using System;
 using Northwind.Utilities.Enum;
 
-namespace Northwind.Utilities.CustExceptions
+namespace Northwind.Models.CustExceptions
 {
     public abstract class HttpStatusException : Exception
     {

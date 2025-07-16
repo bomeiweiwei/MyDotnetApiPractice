@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Northwind.Utilities.Enum;
 
-namespace Northwind.Utilities.CustExceptions
+namespace Northwind.Models.CustExceptions
 {
     public class DataNotFoundException : HttpStatusException
     {

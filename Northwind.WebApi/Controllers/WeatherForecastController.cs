@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Northwind.Utilities.CustExceptions;
+using Northwind.Models.CustExceptions;
 
 namespace Northwind.WebApi.Controllers;
 

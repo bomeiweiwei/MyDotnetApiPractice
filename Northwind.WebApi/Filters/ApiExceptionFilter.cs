@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Northwind.Utilities.CustExceptions;
-using Northwind.Utilities.CustResp;
+using Northwind.Models.CustExceptions;
 using Northwind.Utilities.Enum;
+using Northwind.WebApi.Models.CustResp;
 
 namespace Northwind.WebApi.Filters
 {
