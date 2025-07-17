@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Northwind.Entities.NorthwindContext.Models;
 using Northwind.Models;
@@ -13,7 +14,7 @@ namespace Northwind.Services.Categories.implement
     public class CategoryService : BaseService, ICategoryService
     {
         private IGenericLogger _logger;
-        public CategoryService(IGenericLogger logger)
+        public CategoryService(IHttpContextAccessor httpContextAccessor, IGenericLogger logger) : base(httpContextAccessor)
         {
             _logger = logger;
         }
@@ -24,6 +25,9 @@ namespace Northwind.Services.Categories.implement
             {
                 Data = new List<CategoryDetail>()
             };
+
+            var userData = base.CurrentUser;
+            var userPermissions = base.CurrentPermissions;
 
             using (var context = base.NorthwindDB(ConnectionMode.Slave))
             {

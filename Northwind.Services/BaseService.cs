@@ -7,13 +7,18 @@ using System.Runtime.InteropServices;
 using Northwind.Entities.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Northwind.Services.CacheServer;
+using Northwind.Models.Identity;
+using Microsoft.AspNetCore.Http;
+using Northwind.Services.Extensions;
 
 namespace Northwind.Services
 {
 	public class BaseService
 	{
-		public BaseService()
+        protected readonly IHttpContextAccessor _httpContextAccessor;
+        public BaseService(IHttpContextAccessor httpContextAccessor)
 		{
+            _httpContextAccessor = httpContextAccessor;
         }
         
         protected virtual NorthwindContext NorthwindDB([Optional] ConnectionMode connectionMode)
@@ -63,6 +68,10 @@ namespace Northwind.Services
             return _redisService;
         }
         #endregion
+
+        protected JwtUserInfo CurrentUser => _httpContextAccessor.HttpContext?.User?.ToJwtUserInfo() ?? throw new UnauthorizedAccessException("User is not authenticated.");
+
+        protected List<string> CurrentPermissions => _httpContextAccessor.HttpContext?.User?.GetPermissions() ?? new List<string>();
     }
 }
 

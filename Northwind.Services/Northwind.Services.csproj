@@ -13,6 +13,9 @@
     <None Remove="Test\implement\" />
     <None Remove="CacheServer\" />
     <None Remove="CacheServer\implement\" />
+    <None Remove="Extensions\" />
+    <None Remove="Identity\" />
+    <None Remove="Identity\implement\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Categories\" />
@@ -21,6 +24,9 @@
     <Folder Include="Test\implement\" />
     <Folder Include="CacheServer\" />
     <Folder Include="CacheServer\implement\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Identity\" />
+    <Folder Include="Identity\implement\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="StackExchange.Redis" Version="2.8.41" />

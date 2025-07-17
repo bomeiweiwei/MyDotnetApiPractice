@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Identity.Client;
 using Newtonsoft.Json.Linq;
 using Northwind.Models;
@@ -14,7 +15,7 @@ namespace Northwind.Services.Test.implement
     public class TestService : BaseService, ITestService
     {
         private IGenericLogger _logger;
-        public TestService(IGenericLogger logger)
+        public TestService(IHttpContextAccessor httpContextAccessor, IGenericLogger logger) : base(httpContextAccessor)
         {
             _logger = logger;
         }

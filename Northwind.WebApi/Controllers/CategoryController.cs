@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Northwind.Models;
 using Northwind.Models.Categories;
 using Northwind.Services.Categories;
+using Northwind.WebApi.Filters;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,6 +14,7 @@ namespace Northwind.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [JwtAuthActionFilter]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;

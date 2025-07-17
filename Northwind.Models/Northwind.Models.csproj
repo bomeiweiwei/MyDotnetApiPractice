@@ -7,10 +7,14 @@
   <ItemGroup>
     <None Remove="Categories\" />
     <None Remove="CustExceptions\" />
+    <None Remove="FakeDatas\" />
+    <None Remove="Identity\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Categories\" />
     <Folder Include="CustExceptions\" />
+    <Folder Include="FakeDatas\" />
+    <Folder Include="Identity\" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>

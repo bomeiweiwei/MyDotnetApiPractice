@@ -18,26 +18,18 @@ namespace Northwind.WebApi.Filters
 
         public void OnException(ExceptionContext context)
         {
-            ErrorResponse error;
+            CustomErrorResponse error;
             int statusCode;
 
             if (context.Exception is HttpStatusException httpEx)
             {
                 statusCode = httpEx.HttpStatusCode;
-                error = new ErrorResponse
-                {
-                    StatusCode = httpEx.AppStatusCode,
-                    Message = httpEx.Message
-                };
+                error = new CustomErrorResponse(httpEx.Message, (int)httpEx.AppStatusCode);
             }
             else
             {
                 statusCode = StatusCodes.Status500InternalServerError;
-                error = new ErrorResponse
-                {
-                    StatusCode = ReturnCode.ExceptionError,
-                    Message = "An unexpected error occurred."
-                };
+                error = new CustomErrorResponse("An unexpected error occurred.", (int)ReturnCode.ExceptionError);
 
                 _logger.LogError(context.Exception, "Unhandled exception in API");
             }

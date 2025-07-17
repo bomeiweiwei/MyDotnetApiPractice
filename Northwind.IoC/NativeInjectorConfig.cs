@@ -17,6 +17,7 @@ namespace Northwind.IoC
         /// <param name="service"></param>
         public static void RegisterService(this IServiceCollection service)
         {
+            service.AddHttpContextAccessor();
             service.AddSingleton<IRedisService>(provider => new RedisService(ConfigManager.ConnectionStrings.Redis));
             service.AddSingleton<IGenericLogger, GenericLogger>();
             service.RegisterInheritedTypes(typeof(BaseService).Assembly, typeof(BaseService));
