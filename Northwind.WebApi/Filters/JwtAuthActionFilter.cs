@@ -73,12 +73,8 @@ namespace Northwind.WebApi.Filters
                         }
                         else
                         {
-                            //var user = context.HttpContext.User;
-                            //var accountId = user.FindFirst("AccountId")?.Value;
                             // 解析 Claim
                             var accountId = jwtToken.Claims.FirstOrDefault(x => x.Type == "AccountId")?.Value;
-                            //var userName = jwtToken.Claims.FirstOrDefault(x => x.Type == "UserName")?.Value;
-                            //var scopes = jwtToken.Claims.Where(x => x.Type == "Scope").Select(x => x.Value).ToList();
                             if (accountId != null)
                             {
                                 string redisKey = $"Login:{accountId}";
@@ -109,12 +105,6 @@ namespace Northwind.WebApi.Filters
                         }
                     }
                 }
-                //catch (SecurityTokenExpiredException)
-                //{
-                //    isAllowAnonymous = false;
-                //    statusCode = (int)StatusCodes.Status403Forbidden;
-                //    statusMessage = "Token 已過期";
-                //}
                 catch (Exception ex)
                 {
                     isAllowAnonymous = false;
@@ -133,6 +123,34 @@ namespace Northwind.WebApi.Filters
             }
             else
             {
+                // 權限檢查開始
+                var permissionAttr = context.ActionDescriptor.EndpointMetadata
+                                    .OfType<PermissionAuthorizeAttribute>()
+                                    .FirstOrDefault();
+
+                if (permissionAttr != null)
+                {
+                    // 從 JWT 取得使用者擁有的權限 (ClaimType: "Permission")
+                    var userPermissions = context.HttpContext.User.Claims
+                        .Where(c => c.Type == "Permission")
+                        .Select(c => int.Parse(c.Value))
+                        .ToHashSet();
+
+                    // 是否有任一個必要權限
+                    bool hasPermission = permissionAttr.RequiredPermissions
+                        .Any(rp => userPermissions.Contains(rp));
+
+                    if (!hasPermission)
+                    {
+                        context.Result = new ObjectResult(new CustomErrorResponse("您沒有足夠的權限執行此操作", StatusCodes.Status403Forbidden))
+                        {
+                            StatusCode = StatusCodes.Status403Forbidden
+                        };
+                        return;
+                    }
+                }
+
+
                 await next(); // 驗證通過，繼續執行原始 Action
             }
         }

@@ -32,8 +32,7 @@ namespace Northwind.Services.Identity.implement
                 Permissions = new List<int>()
                 {
                     (int)PermissionCode.ViewEmployees,
-                    (int)PermissionCode.ViewCategories,
-                    (int)PermissionCode.CreateCategory
+                    (int)PermissionCode.ManageCategories
                 }
             },
             new FakeAccount()
@@ -51,6 +50,19 @@ namespace Northwind.Services.Identity.implement
             new FakeAccount()
             {
                 AccountId = 3,
+                UserId = "Employee2",
+                Password = "1234",
+                UserName = "員工2號",
+                // 假裝是DB讀到的權限數字
+                Permissions = new List<int>()
+                {
+                    (int)PermissionCode.ViewCategories,
+                    (int)PermissionCode.CreateCategory
+                }
+            },
+            new FakeAccount()
+            {
+                AccountId = 4,
                 UserId = "Member1",
                 Password = "1234",
                 UserName = "會員1號",
