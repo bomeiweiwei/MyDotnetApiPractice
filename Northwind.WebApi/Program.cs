@@ -44,7 +44,7 @@ builder.Services.AddCors(options =>
                       });
 });
 
-
+// 自動注入
 builder.Services.RegisterService();
 
 builder.Services.AddControllers();
