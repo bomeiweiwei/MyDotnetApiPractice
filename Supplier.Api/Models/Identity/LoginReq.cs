@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Supplier.Api.Models
+namespace Supplier.Api.Models.Identity
 {
 	public class LoginReq
 	{

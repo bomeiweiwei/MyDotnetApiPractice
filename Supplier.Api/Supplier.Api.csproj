@@ -28,6 +28,14 @@
     <None Remove="Services\" />
     <None Remove="Services\Identity\" />
     <None Remove="Services\Identity\implement\" />
+    <None Remove="Services\Test\" />
+    <None Remove="Services\Test\implement\" />
+    <None Remove="Models\Api\" />
+    <None Remove="Models\CustResp\" />
+    <None Remove="Models\Identity\" />
+    <None Remove="Models\Config\" />
+    <None Remove="Models\Config\External\" />
+    <None Remove="Models\Config\Sys\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -35,5 +43,14 @@
     <Folder Include="Services\" />
     <Folder Include="Services\Identity\" />
     <Folder Include="Services\Identity\implement\" />
+    <Folder Include="Services\Test\" />
+    <Folder Include="Services\Test\implement\" />
+    <Folder Include="Models\Api\" />
+    <Folder Include="Models\CustResp\" />
+    <Folder Include="Models\CustResp\" />
+    <Folder Include="Models\Identity\" />
+    <Folder Include="Models\Config\" />
+    <Folder Include="Models\Config\External\" />
+    <Folder Include="Models\Config\Sys\" />
   </ItemGroup>
 </Project>

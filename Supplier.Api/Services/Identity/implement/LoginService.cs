@@ -4,6 +4,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Supplier.Api.Models;
+using Supplier.Api.Models.Api;
+using Supplier.Api.Models.Identity;
 
 namespace Supplier.Api.Services.Identity.implement
 {

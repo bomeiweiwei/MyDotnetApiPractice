@@ -26,7 +26,7 @@ namespace Northwind.WebApi.Controllers
         public async Task<IActionResult> Login(LoginReq req)
         {
             var resp = await _service.Login(req);
-            return Ok(new ApiResponseBase<LoginResp>() { Data = resp.Data });
+            return Ok(resp);
         }
     }
 }

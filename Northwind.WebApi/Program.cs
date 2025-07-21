@@ -30,6 +30,21 @@ builder.Services.AddControllers(options =>
 
 ConfigurationManager configuration = builder.Configuration;
 ConfigManager.Initial(configuration);
+
+var withOrigins = ConfigManager.SystemSection.WithOrigins.ToArray();
+var allowSpecificOrigins = "AllowOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins(withOrigins)
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                      });
+});
+
+
 builder.Services.RegisterService();
 
 builder.Services.AddControllers();
@@ -108,6 +123,8 @@ else
 
 
 app.UseHttpsRedirection();
+
+app.UseCors(allowSpecificOrigins);
 
 app.UseRouting();
 

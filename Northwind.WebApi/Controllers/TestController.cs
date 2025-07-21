@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Northwind.Entities.NorthwindContext.Data;
 using Northwind.Models;
 using Northwind.Services.Test;
+using Northwind.Utilities.ConfigManager;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -49,6 +50,37 @@ namespace Northwind.WebApi.Controllers
         public async Task<IActionResult> RedisGetValue()
         {
             return Ok(await _testService.RedisGetValue());
+        }
+
+        [HttpGet("GetSystemInfo")]
+        public IActionResult GetSystemInfo()
+        {
+            return Ok(new
+            {
+                apiKey = ConfigManager.SystemSection.ApiKey,
+                headerName = ConfigManager.SystemSection.HeaderName,
+                allowedOrigins = ConfigManager.SystemSection.WithOrigins
+            });
+        }
+
+        [HttpGet]
+        [Route("GetFakeSupplierData")]
+        public IActionResult GetFakeSupplierData()
+        {
+            string apiKey = ConfigManager.ExternalSystemsSection.FakeSupplier.ApiKey;
+            string header = ConfigManager.ExternalSystemsSection.FakeSupplier.HeaderName;
+            return Ok(new { apiKey, header });
+        }
+
+        [HttpGet]
+        [Route("GetFakeBank1Data")]
+        public IActionResult GetFakeBank1Data()
+        {
+            var test = ConfigManager.ExternalSystemsSection.GetSystem("FakeBank1");
+
+            string apiKey = test.ApiKey;
+            string header = test.HeaderName;
+            return Ok(new { apiKey, header });
         }
     }
 }
