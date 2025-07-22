@@ -12,6 +12,7 @@ namespace Northwind.Utilities.ConfigManager
             _section = section;
         }
 
+        public string ApiServerUrl => _section["ApiServerUrl"];
         public string ApiKey => _section["ApiKey"];
         public string HeaderName => _section["HeaderName"];
     }

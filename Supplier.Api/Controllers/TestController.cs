@@ -50,17 +50,26 @@ namespace Supplier.Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetNorthwindData")]
-        public IActionResult GetNorthwindData()
+        [Route("GetNorthwindSetting")]
+        public IActionResult GetNorthwindSetting()
         {
+            string url = "";
             string apiKey = "";
             string header = "";
             if (_systems.TryGetValue("Northwind", out var config))
             {
+                url = config.ApiServerUrl;
                 apiKey = config.ApiKey;
                 header = config.HeaderName;
             }
-            return Ok(new { apiKey, header });
+            return Ok(new { url, apiKey, header });
+        }
+        [HttpGet]
+        [Route("GetProduct")]
+        public async Task<IActionResult> GetProduct(int id)
+        {
+            var resp = await _testService.GetProduct(id);
+            return Ok(resp.Data);
         }
     }
 }

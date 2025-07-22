@@ -8,6 +8,8 @@ namespace Supplier.Api.Services.Test
 	public interface ITestService
 	{
         Task<ApiResponseBase<OptionsGetValueResp>> OptionsGetValue();
+
+        Task<ApiResponseBase<GetProductResp>> GetProduct(int id);
     }
 }
 

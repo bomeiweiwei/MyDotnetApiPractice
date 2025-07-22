@@ -9,12 +9,14 @@
     <None Remove="CustExceptions\" />
     <None Remove="FakeDatas\" />
     <None Remove="Identity\" />
+    <None Remove="External\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Categories\" />
     <Folder Include="CustExceptions\" />
     <Folder Include="FakeDatas\" />
     <Folder Include="Identity\" />
+    <Folder Include="External\" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>

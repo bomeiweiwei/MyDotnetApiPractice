@@ -36,6 +36,7 @@
     <None Remove="Models\Config\" />
     <None Remove="Models\Config\External\" />
     <None Remove="Models\Config\Sys\" />
+    <None Remove="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -52,5 +53,6 @@
     <Folder Include="Models\Config\" />
     <Folder Include="Models\Config\External\" />
     <Folder Include="Models\Config\Sys\" />
+    <Folder Include="Helper\" />
   </ItemGroup>
 </Project>

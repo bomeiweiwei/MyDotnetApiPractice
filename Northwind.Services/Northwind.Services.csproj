@@ -16,6 +16,8 @@
     <None Remove="Extensions\" />
     <None Remove="Identity\" />
     <None Remove="Identity\implement\" />
+    <None Remove="Products\" />
+    <None Remove="Products\implement\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Categories\" />
@@ -27,6 +29,8 @@
     <Folder Include="Extensions\" />
     <Folder Include="Identity\" />
     <Folder Include="Identity\implement\" />
+    <Folder Include="Products\" />
+    <Folder Include="Products\implement\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="StackExchange.Redis" Version="2.8.41" />

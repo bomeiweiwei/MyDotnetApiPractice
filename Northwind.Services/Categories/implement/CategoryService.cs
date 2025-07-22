@@ -31,7 +31,7 @@ namespace Northwind.Services.Categories.implement
 
             using (var context = base.NorthwindDB(ConnectionMode.Slave))
             {
-                result.Data = await context.Categories.Select(m => new CategoryDetail()
+                result.Data = await context.Categories.AsNoTracking().Select(m => new CategoryDetail()
                 {
                     CategoryId = m.CategoryId,
                     CategoryName = m.CategoryName,

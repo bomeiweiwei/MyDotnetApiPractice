@@ -54,6 +54,8 @@ builder.Services.AddSwaggerGen(options => {
     });
 });
 
+builder.Services.AddHttpClient();
+
 builder.Services.Configure<SystemSettings>(builder.Configuration.GetSection("System"));
 builder.Services.Configure<ExternalSystemsOptions>(builder.Configuration.GetSection("ExternalSystems"));
 
