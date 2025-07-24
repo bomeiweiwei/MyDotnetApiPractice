@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Supplier.Api.Filters;
 using Supplier.Api.Models;
 using Supplier.Api.Models.Api;
 using Supplier.Api.Models.Config.External;
@@ -32,6 +33,7 @@ namespace Supplier.Api.Controllers
         }
 
         [HttpGet("GetSystemInfo")]
+        [ApiKeyAuth]
         public IActionResult GetSystemInfo()
         {
             return Ok(new
