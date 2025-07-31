@@ -29,6 +29,9 @@
     <ProjectReference Include="..\Northwind.IoC\Northwind.IoC.csproj" />
     <ProjectReference Include="..\Northwind.Models\Northwind.Models.csproj" />
     <ProjectReference Include="..\Northwind.Utilities\Northwind.Utilities.csproj" />
+    <ProjectReference Include="..\Northwind.Repository\Northwind.Repository.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>

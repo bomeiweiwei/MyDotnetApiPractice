@@ -4,6 +4,7 @@ using Supplier.Api.Models.Config.External;
 using Supplier.Api.Models.Config.Sys;
 using Supplier.Api.Services.Identity;
 using Supplier.Api.Services.Identity.implement;
+using Supplier.Api.Services.Orders;
 using Supplier.Api.Services.Test;
 using Supplier.Api.Services.Test.implement;
 
@@ -24,6 +25,7 @@ builder.Services.AddCors(options =>
 // Add services to the container.
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ITestService, TestService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -39,7 +39,9 @@ namespace Northwind.Utilities.Enum
         /// 異常錯誤
         /// </summary>
         [Description("異常錯誤")]
-        ExceptionError = 500
+        ExceptionError = 500,
+
+        ExternalApiExceptionError = 1004
     }
 }
 

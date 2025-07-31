@@ -6,6 +6,8 @@ using Northwind.Utilities.Helper;
 using Northwind.Services.CacheServer;
 using Northwind.Services.CacheServer.implement;
 using Northwind.Utilities.ConfigManager;
+using Northwind.Repository.Supplier;
+using Northwind.Repository.Supplier.implement;
 
 namespace Northwind.IoC
 {
@@ -18,8 +20,11 @@ namespace Northwind.IoC
         public static void RegisterService(this IServiceCollection service)
         {
             service.AddHttpContextAccessor();
+            service.AddHttpClient();
             service.AddSingleton<IRedisService>(provider => new RedisService(ConfigManager.ConnectionStrings.Redis));
             service.AddSingleton<IGenericLogger, GenericLogger>();
+            service.AddScoped<IHttpClientHelper, HttpClientHelper>();
+            service.AddScoped<ISupplierRepository, SupplierRepository>();
             service.RegisterInheritedTypes(typeof(BaseService).Assembly, typeof(BaseService));
         }
 
