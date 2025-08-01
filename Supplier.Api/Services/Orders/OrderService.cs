@@ -14,6 +14,13 @@ namespace Supplier.Api.Services.Orders
             new OrderData(){ OrderId=1,CustomerId=3,ShipName="CCC",ShipAddress="DDDDD",ShippedDate=DateTime.Now.AddMonths(-1)}
         };
 
+        private List<ShippedData> shippedDatas = new List<ShippedData>()
+        {
+            new ShippedData(){ Id=1,Contact="王大明",Address="AAAAAA"},
+            new ShippedData(){ Id=2,Contact="王中明",Address="AAAAAA"},
+            new ShippedData(){ Id=3,Contact="王小明",Address="AAAAAA"}
+        };
+
         public async Task<ApiResponseBase<List<OrderData>>> GetOrderDatas(ApiPageRequestBase<QueryOrderArgs> req)
         {
             var result = new ApiResponseBase<List<OrderData>>()
@@ -23,6 +30,24 @@ namespace Supplier.Api.Services.Orders
 
             result.Data = orders.Where(m => m.ShippedDate.HasValue && m.ShippedDate.Value >= req.Data.ShippedStartDate && m.ShippedDate.Value <= req.Data.ShippedEndDate).ToList();
             result.Count = result.Data.Count();
+
+            return result;
+        }
+
+        public async Task<ApiResponseBase<ShippedData>> QueryShippedData(QueryShippedDataArgs req)
+        {
+            var result = new ApiResponseBase<ShippedData>()
+            {
+                Data = new ShippedData()
+            };
+
+            var query = shippedDatas.Where(m => m.Id == req.Id);
+            if (!string.IsNullOrWhiteSpace(req.Contact))
+            {
+                query = query.Where(m => m.Contact.Contains(req.Contact));
+            }
+
+            result.Data = query.FirstOrDefault() ?? new ShippedData();
 
             return result;
         }

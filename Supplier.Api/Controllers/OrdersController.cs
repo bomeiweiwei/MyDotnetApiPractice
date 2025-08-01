@@ -30,6 +30,12 @@ namespace Supplier.Api.Controllers
             var resp = await _orderService.GetOrderDatas(req);
             return Ok(resp);
         }
+        [HttpPost("QueryShippedData")]
+        public async Task<IActionResult> QueryShippedData([FromForm] QueryShippedDataArgs req)
+        {
+            var resp = await _orderService.QueryShippedData(req);
+            return Ok(resp);
+        }
     }
 }
 

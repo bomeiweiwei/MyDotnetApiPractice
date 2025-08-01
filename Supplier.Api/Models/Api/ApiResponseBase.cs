@@ -6,7 +6,7 @@ namespace Supplier.Api.Models.Api
         // <summary>
         /// 狀態代碼
         /// </summary>
-        public long StatusCode { get; set; } = 0;
+        public long StatusCode { get; set; } = 200;
         /// <summary>
         /// 訊息列表
         /// </summary>

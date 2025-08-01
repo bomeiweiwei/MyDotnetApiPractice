@@ -60,7 +60,7 @@ namespace Supplier.Api.Services.Test.implement
             var url = $"{config.ApiServerUrl}/api/External/Products/GetProduct?id={id}";
 
             var resp = await ApiCallerHelper.GetAsync<ApiResponseBase<GetProductResp>>(client, url, config.ApiKey, config.HeaderName);
-            if (resp.Data != null && resp.StatusCode == 0)
+            if (resp.Data != null && resp.StatusCode == 200)
             {
                 result.Data = resp.Data;
             }

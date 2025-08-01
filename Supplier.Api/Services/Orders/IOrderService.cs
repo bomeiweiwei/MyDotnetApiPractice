@@ -7,6 +7,8 @@ namespace Supplier.Api.Services.Orders
 	public interface IOrderService
 	{
 		Task<ApiResponseBase<List<OrderData>>> GetOrderDatas(ApiPageRequestBase<QueryOrderArgs> req);
+
+        Task<ApiResponseBase<ShippedData>> QueryShippedData(QueryShippedDataArgs req);
     }
 }
 

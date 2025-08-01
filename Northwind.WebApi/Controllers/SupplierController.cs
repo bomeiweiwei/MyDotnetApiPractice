@@ -29,6 +29,13 @@ namespace Northwind.WebApi.Controllers
             var resp = await _supplierRepository.GetOrderDatas(req);
             return Ok(resp);
         }
+        [HttpPost]
+        [Route("QueryShippedData")]
+        public async Task<IActionResult> QueryShippedData(QueryShippedDataArgs req)
+        {
+            var resp = await _supplierRepository.QueryShippedData(req);
+            return Ok(resp);
+        }
     }
 }
 

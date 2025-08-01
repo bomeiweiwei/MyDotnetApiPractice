@@ -9,7 +9,7 @@ namespace Northwind.Utilities.Enum
         /// 成功
         /// </summary>
         [Description("成功")]
-        Succeeded = 0,
+        Succeeded = 200,
         /// <summary>
         /// 參數錯誤
         /// </summary>
