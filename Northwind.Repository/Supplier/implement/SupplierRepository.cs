@@ -77,7 +77,7 @@ namespace Northwind.Repository.Supplier.implement
             {
                 var formData = FormHelper.ToFormDictionary(req);
                 /*
-                 實測參數最後只有Id可以傳過去(沒有Contact)，對方的字串要string?接才可以，好難用lol
+                 實測參數Contact故意是空字串，formData最後只有Id傳過去(沒有Contact)，對方的字串要string?接才可以，好難用lol
                  */
 
                 var headers = GenerateApiHeaders();
@@ -91,7 +91,7 @@ namespace Northwind.Repository.Supplier.implement
                 }
                 else
                 {
-                    throw new BusinessException(ReturnCode.ExternalApiExceptionError, "呼叫 Supplier ShippedData api 失敗");
+                    throw new BusinessException(ReturnCode.ExternalApiExceptionError, "呼叫 Supplier QueryShippedData api 失敗");
                 }
             }
             catch (BusinessException)
