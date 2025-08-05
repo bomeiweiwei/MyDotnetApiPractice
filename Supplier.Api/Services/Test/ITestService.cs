@@ -10,6 +10,8 @@ namespace Supplier.Api.Services.Test
         Task<ApiResponseBase<OptionsGetValueResp>> OptionsGetValue();
 
         Task<ApiResponseBase<GetProductResp>> GetProduct(int id);
+
+        Task<ApiResponseBase<CustomerDetailData>> GetCustomerDetailData(SensitiveData req);
     }
 }
 

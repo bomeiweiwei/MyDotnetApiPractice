@@ -61,8 +61,8 @@ namespace Supplier.Api.Controllers
             if (_systems.TryGetValue("Northwind", out var config))
             {
                 url = config.ApiServerUrl;
-                apiKey = config.ApiKey;
-                header = config.HeaderName;
+                apiKey = config.ApiConfigs.ApiKey;
+                header = config.ApiConfigs.HeaderName;
             }
             return Ok(new { url, apiKey, header });
         }
@@ -71,6 +71,14 @@ namespace Supplier.Api.Controllers
         public async Task<IActionResult> GetProduct(int id)
         {
             var resp = await _testService.GetProduct(id);
+            return Ok(resp.Data);
+        }
+
+        [HttpPost]
+        [Route("GetCustomerDetailData")]
+        public async Task<IActionResult> GetCustomerDetailData(SensitiveData req)
+        {
+            var resp = await _testService.GetCustomerDetailData(req);
             return Ok(resp.Data);
         }
     }

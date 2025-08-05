@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text.Json;
 using Microsoft.Extensions.Options;
 using Supplier.Api.Helper;
 using Supplier.Api.Models;
@@ -14,6 +15,7 @@ namespace Supplier.Api.Services.Test.implement
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly SystemSettings _systemSettings;
         private readonly ExternalSystemsOptions _externalSystems;
+
         public TestService(IHttpClientFactory httpClientFactory, IOptions<SystemSettings> systemOptions, IOptions<ExternalSystemsOptions> options)
         {
             _httpClientFactory = httpClientFactory;
@@ -39,8 +41,8 @@ namespace Supplier.Api.Services.Test.implement
                 {
                     SysName = kv.Key,
                     Url = kv.Value.ApiServerUrl,
-                    ApiKey = kv.Value.ApiKey,
-                    Header = kv.Value.HeaderName
+                    ApiKey = kv.Value.ApiConfigs.ApiKey,
+                    Header = kv.Value.ApiConfigs.HeaderName
                 };
                 result.Data.ExternalSystemSettings.Add(setting);
             }
@@ -59,11 +61,40 @@ namespace Supplier.Api.Services.Test.implement
             var client = _httpClientFactory.CreateClient();
             var url = $"{config.ApiServerUrl}/api/External/Products/GetProduct?id={id}";
 
-            var resp = await ApiCallerHelper.GetAsync<ApiResponseBase<GetProductResp>>(client, url, config.ApiKey, config.HeaderName);
+            var resp = await ApiCallerHelper.GetAsync<ApiResponseBase<GetProductResp>>(client, url, config.ApiConfigs.ApiKey, config.ApiConfigs.HeaderName);
             if (resp.Data != null && resp.StatusCode == 200)
             {
                 result.Data = resp.Data;
             }
+            return result;
+        }
+
+        public async Task<ApiResponseBase<CustomerDetailData>> GetCustomerDetailData(SensitiveData req)
+        {
+            var result = new ApiResponseBase<CustomerDetailData>()
+            {
+                Data = new CustomerDetailData()
+            };
+
+            SensitiveData data = new SensitiveData()
+            {
+                Account = req.Account,
+                IdNumber = req.IdNumber
+            };
+            
+            if (_externalSystems.TryGetValue("Northwind", out var config))
+            {
+                string input = AesEncryptionHelper.EncryptObject(data, config.AesConfigs.AesKey, config.AesConfigs.AesIv);
+                var client = _httpClientFactory.CreateClient();
+                var url = $"{config.ApiServerUrl}/api/External/Customer/GetCustomerDetailData";
+
+                var resp = await SecureApiCallerHelper.PostEncryptedStringAsync
+                    (client, url, input, config.ApiConfigs.ApiKey, config.ApiConfigs.HeaderName, config.AesConfigs.AesKey, config.AesConfigs.AesIv);
+
+                result.Data = JsonSerializer.Deserialize<CustomerDetailData>(resp);
+            }
+            // 呼叫 API 傳送 secureRequest
+
             return result;
         }
     }

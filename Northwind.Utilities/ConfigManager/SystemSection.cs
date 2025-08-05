@@ -11,8 +11,14 @@ namespace Northwind.Utilities.ConfigManager
             _section = section;
         }
 
-        public string ApiKey => _section["ApiKey"];
-        public string HeaderName => _section["HeaderName"];
+        // ApiConfigs 子區塊
+        public string ApiKey => _section.GetSection("ApiConfigs")["ApiKey"];
+        public string HeaderName => _section.GetSection("ApiConfigs")["HeaderName"];
+
+        // AesConfigs 子區塊
+        public string AesKey => _section.GetSection("AesConfigs")["AesKey"];
+        public string AesIv => _section.GetSection("AesConfigs")["AesIv"];
+
         public List<string> WithOrigins => _section.GetSection("WithOrigins").Get<List<string>>();
     }
 }
